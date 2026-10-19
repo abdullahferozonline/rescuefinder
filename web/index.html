@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101a2c">
+<meta name="description" content="Offline-first emergency GPS coordinates and downloadable maps.">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="stylesheet" href="./style.css">
+<title>RescueFinder — Offline GPS</title>
+</head>
+<body>
+<header class="top">
+  <div class="brand-mark">⌖</div>
+  <div><h1>RescueFinder</h1><p>Offline emergency GPS</p></div>
+  <span id="netStatus" class="pill">Checking</span>
+</header>
+<main>
+  <section class="hero panel">
+    <div class="section-kicker">YOUR LOCATION</div>
+    <div id="gpsStatus" class="status"><span class="dot"></span> Ready to locate</div>
+    <div class="coords">
+      <div><label>LATITUDE</label><strong id="lat">—</strong></div>
+      <div><label>LONGITUDE</label><strong id="lon">—</strong></div>
+    </div>
+    <div class="meta"><span>Accuracy: <b id="accuracy">—</b></span><span>Updated: <b id="updated">—</b></span></div>
+    <div class="actions">
+      <button id="locateBtn" class="primary">◎ Get GPS location</button>
+      <button id="copyBtn" class="secondary">Copy coordinates</button>
+    </div>
+    <p class="hint">GPS can work without internet. Keep the phone outdoors with a clear view of the sky for a better fix.</p>
+  </section>
+
+  <section class="panel emergency">
+    <div><div class="section-kicker">EMERGENCY</div><h2>Share your location</h2><p>Prepare a message using your latest saved coordinates.</p></div>
+    <textarea id="emergencyMessage" rows="3" aria-label="Emergency message">I may need help. My last known coordinates are not available yet.</textarea>
+    <div class="actions"><button id="prepareBtn" class="primary">Prepare message</button><button id="saveBtn" class="secondary">Save current fix</button></div>
+    <p class="hint warning">This does not send an alert automatically. Sending requires a working communication channel.</p>
+  </section>
+
+  <section class="panel">
+    <div class="section-kicker">OFFLINE MAPS</div><h2>Map packages on this device</h2>
+    <p class="muted">Import a GeoJSON file while online. It will be saved locally and can be viewed later without internet.</p>
+    <div class="actions wrap">
+      <label class="file-button secondary">Import GeoJSON<input id="mapFile" type="file" accept=".json,.geojson,application/geo+json,application/json"></label>
+      <button id="downloadSample" class="secondary">Load demo map</button>
+      <button id="clearMap" class="danger">Remove map</button>
+    </div>
+    <label for="mapUrl" class="hint">Download a GeoJSON package from a trusted URL (while online)</label>
+    <input id="mapUrl" type="url" placeholder="https://example.org/your-area.geojson" autocomplete="url">
+    <div class="actions"><button id="downloadMapUrl" class="secondary">Download map package</button></div>
+    <div id="mapName" class="map-name">No map package loaded</div>
+    <canvas id="mapCanvas" width="900" height="520" aria-label="Offline GeoJSON map"></canvas>
+    <p id="mapInfo" class="hint">The demo map is illustrative only. It is not a navigable street map.</p>
+    <div class="actions"><button id="exportMap" class="secondary">Export saved map</button></div>
+  </section>
+
+  <section class="panel">
+    <div class="section-kicker">LAST KNOWN FIX</div><h2>Saved on this device</h2>
+    <p id="lastFix" class="muted">No saved location yet.</p>
+    <div class="actions"><button id="clearFix" class="danger">Delete saved location</button></div>
+  </section>
+
+  <section class="panel safety">
+    <h2>Before you go offline</h2>
+    <ul>
+      <li>Install/open RescueFinder while you still have internet.</li>
+      <li>Grant location permission and test GPS outdoors.</li>
+      <li>Download a map package for the area and check it opens offline.</li>
+      <li>Tell a trusted person your route and expected return time.</li>
+      <li>In an emergency, use the local emergency number if a call is possible. In India, 112 is the pan-India emergency number.</li>
+    </ul>
+  </section>
+</main>
+<footer>RescueFinder · Coordinates stay on this device unless you choose to share them.</footer>
+<script src="./app.js"></script>
+</body>
+</html>

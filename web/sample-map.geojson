@@ -1,0 +1,42 @@
+{
+  "type": "FeatureCollection",
+  "name": "Illustrative demo map only",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Demo route"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            85.12,
+            25.58
+          ],
+          [
+            85.14,
+            25.59
+          ],
+          [
+            85.16,
+            25.61
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Demo point"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          85.14,
+          25.59
+        ]
+      }
+    }
+  ]
+}

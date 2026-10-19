@@ -1,0 +1,10 @@
+{
+  "name": "RescueFinder Offline GPS",
+  "short_name": "RescueFinder",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0a1020",
+  "theme_color": "#101a2c",
+  "description": "Offline emergency GPS coordinates and map packages"
+}
